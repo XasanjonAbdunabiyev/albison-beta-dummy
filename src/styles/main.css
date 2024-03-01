@@ -1,0 +1,51 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("./modal.css");
+
+body {
+  font-family: "Space Mono", monospace;
+}
+
+.loader {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: rgba(18, 18, 18, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.5s ease;
+  overflow: hidden;
+}
+
+.loader-hidden {
+  opacity: 0;
+  pointer-events: auto;
+  display: none;
+}
+
+.loader::after {
+  content: "";
+  width: 80px;
+  height: 80px;
+  border: 15px solid #ddd;
+  border-top-color: #970097;
+  border-radius: 50%;
+  animation: loading 0.5s ease infinite;
+}
+
+@keyframes loading {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

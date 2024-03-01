@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/styles/output.css" />
+    <!-- Fn Icons CDN  -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <title>Shopping Cart</title>
+  </head>
+  <body>
+    <div class="loader"></div>
+    <!-- header -->
+    <header
+      class="sticky top-0 z-10 bg-white backdrop-filter backdrop-blur-lg bg-opacity-30 border-b border-gray-200 firefox:bg-opacity-90"
+    >
+      <div class="mx-auto px-4 max-w-7xl">
+        <nav class="navbar flex items-center justify-between h-16">
+          <div class="logo text-2xl font-thin text-gary-900">LOGO</div>
+          <div class="menu flex items-center gap-5">
+            <button
+              class="bg-white border rounded text-lg text-center cursor-pointer py-1 px-1 flex gap-4 items-center"
+            >
+              <i class="fa-solid fa-cart-shopping"></i>
+              <p>(0)</p>
+            </button>
+            <a
+              href="./src/pages/auth/login.html"
+              class="text-base underline font-bold"
+              >LogIn</a
+            >
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- select product categories -->
+    <div class="my-3 mx-4">
+      <select
+        id="select-product"
+        class="py-3 px-4 pe-9 block w-full bg-gray-100 border-transparent rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-700 dark:border-transparent dark:text-gray-400 dark:focus:ring-gray-600"
+      >
+        <option selected class="font-bold">Chooise a categories</option>
+      </select>
+    </div>
+
+    <!-- products root -->
+    <div class="mx-auto px-4 max-w-7xl">
+      <div
+        class="products-container flex items-center flex-row flex-wrap gap-4"
+      />
+    </div>
+
+    <!-- #modal -->
+    <div
+      class="main-modal hidden fixed w-full h-100 inset-0 z-50 overflow-hidden justify-center items-center fadeIn faster"
+      style="background: rgba(0, 0, 0, 0.7)"
+    >
+      <div
+        class="border border-teal-500 modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto"
+      >
+        <div class="modal-content py-4 text-left px-6">
+          <!--Title-->
+          <div class="flex justify-between items-center pb-3">
+            <p class="detail-product-title text-2xl font-bold">
+              Lorem ipsum dolor sit.
+            </p>
+            <div class="modal-close cursor-pointer z-50">
+              <svg
+                class="fill-current text-black"
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 18 18"
+              >
+                <path
+                  d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"
+                ></path>
+              </svg>
+            </div>
+          </div>
+          <img src="" class="detail-product-image" alt="" />
+          <!--Body-->
+          <div class="my-5">
+            <p class="detail-product-desc">
+              Inliberali Persius Multi iustitia pronuntiaret expeteretur sanos
+              didicisset laus angusti ferrentur arbitrium arbitramur huic
+              desiderent.?
+            </p>
+            <p class="product-detail-price"></p>
+          </div>
+          <!--Footer-->
+          <div class="flex justify-end pt-2">
+            <button
+              class="focus:outline-none modal-close px-4 bg-gray-400 p-3 rounded-lg text-black hover:bg-gray-300"
+            >
+              Cancel
+            </button>
+            <button
+              class="focus:outline-none px-4 bg-teal-500 p-3 ml-3 rounded-lg text-white hover:bg-teal-400"
+            >
+              save to cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="./src/scripts/main.js"></script>
+  </body>
+</html>
