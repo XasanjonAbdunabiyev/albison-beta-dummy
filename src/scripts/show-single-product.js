@@ -8,6 +8,14 @@ const modalTitle = document.querySelector(".detail-product-title");
 const singleProductImage = document.querySelector(".detail-product-image");
 const productDetailPrice  = document.querySelector(".product-detail-price");
 
+const saveBtn = document.querySelector('.bg-teal-500')
+const header = document.querySelector('header')
+const modalOrdered = document.querySelector('.modal-Ordered')
+const orderButton = header.querySelector('button')
+let orderedItems = []
+
+
+
 export async function showSingProductWithModal(button) {
   let productId = button.dataset.id;
 
@@ -23,6 +31,57 @@ export async function showSingProductWithModal(button) {
   });
 }
 
+orderButton.addEventListener('click', () => {
+  if (modalOrdered.classList.contains('flex')) {
+    
+  modalOrdered.classList.remove('flex')
+  modalOrdered.classList.add('hidden')
+  } else { 
+  modalOrdered.classList.add('flex')
+  modalOrdered.classList.remove('hidden')
+  }
+})
+
 modalClose.addEventListener("click", function () {
   modal.style.display = "none";
 });
+
+saveBtn.addEventListener('click', (e) => {
+  let numOfProduct = header.querySelector('span')
+  let count = +(numOfProduct.innerText)
+  count = count + 1
+  numOfProduct.innerText = count
+  let list = addedItems(e.target)
+  let items = ''
+  list.forEach(element => { 
+    items += `
+      <div class="item flex items-center justify-between mx-4">
+        <div class="image"><img src="${element.image}" width="80px" height="80px" alt="product-image"></div>
+        <div class="product-name">${element.productName}</div>
+        <div class="product-price">${element.price}</div>
+      </div>
+      <hr/>
+`
+  });
+ 
+  modalOrdered.innerHTML = items
+});
+
+modal.addEventListener('click', (e) => {
+  if (e.target && (e.target.classList.contains('main-modal') || 
+  e.target.classList.contains('bg-gray-400'))){
+    modal.style.display = "none";
+  }
+})
+
+function addedItems(params) {
+  let product = params.parentElement.parentElement
+  const productName = product.querySelector('.detail-product-title').innerText
+  const image = product.querySelector('img').getAttribute('src')
+  const price = product.querySelector('.product-detail-price').innerText
+  const item = { productName, image, price }
+  orderedItems.push(item)
+  return orderedItems
+}
+
+
