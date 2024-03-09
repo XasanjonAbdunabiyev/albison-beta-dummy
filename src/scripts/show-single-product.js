@@ -11,7 +11,9 @@ const productDetailPrice  = document.querySelector(".product-detail-price");
 const saveBtn = document.querySelector('.bg-teal-500')
 const header = document.querySelector('header')
 const modalOrdered = document.querySelector('.modal-Ordered')
+const orderItems = document.querySelector('.items')
 const orderButton = header.querySelector('button')
+const total = header.querySelector('.total')
 let orderedItems = []
 
 
@@ -53,6 +55,10 @@ saveBtn.addEventListener('click', (e) => {
   numOfProduct.innerText = count
   let list = addedItems(e.target)
   let items = ''
+  let totalPrice = 0
+  list.forEach(element => {
+    totalPrice = totalPrice + parseFloat(element.price)
+  })
   list.forEach(element => { 
     items += `
       <div class="item flex items-center justify-between mx-4">
@@ -63,8 +69,8 @@ saveBtn.addEventListener('click', (e) => {
       <hr/>
 `
   });
- 
-  modalOrdered.innerHTML = items
+  orderItems.innerHTML = items
+  total.innerText = `Total: ${totalPrice}$`
 });
 
 modal.addEventListener('click', (e) => {
